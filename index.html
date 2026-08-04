@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SIGAP</title>
+    <style>
+        /* Pengaturan dasar halaman */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Desain kotak login */
+        .login-container {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Judul dan deskripsi */
+        .login-container h2 {
+            text-align: center;
+            color: #1e5631; /* Hijau tua */
+            margin-bottom: 5px;
+        }
+        
+        .login-container p {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        /* Desain form input */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            border-color: #4c9a2a; /* Hijau muda */
+            outline: none;
+        }
+
+        /* Desain tombol login */
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background-color: #1e5631;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: #4c9a2a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>SIGAP</h2>
+        <p>Sistem Pemantauan Salinitas Sawah Pesisir</p>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Username (Email)</label>
+                <input type="email" id="email" placeholder="Masukkan email Anda" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Masukkan password Anda" required>
+            </div>
+
+            <div class="form-group">
+                <label for="role">Pilih Peran (Stakeholder)</label>
+                <select id="role" required>
+                    <option value="" disabled selected>-- Pilih Peran --</option>
+                    <option value="dinas">Dinas Pertanian Indramayu</option>
+                    <option value="penyuluh">Penyuluh Pertanian</option>
+                    <option value="autp">Petugas Asuransi AUTP</option>
+                    <option value="peneliti">Peneliti / Akademisi</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-login">Masuk</button>
+        </form>
+    </div>
+
+    <script>
+        // Logika JavaScript untuk mengarahkan pengguna berdasarkan peran
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            // Mencegah halaman reload secara default saat tombol ditekan
+            event.preventDefault();
+
+            // Mengambil nilai dari dropdown role
+            const selectedRole = document.getElementById('role').value;
+
+            // Logika perpindahan halaman (routing sederhana)
+            if (selectedRole === 'dinas') {
+                window.location.href = 'dinas.html';
+            } else if (selectedRole === 'penyuluh') {
+                window.location.href = 'penyuluh.html';
+            } else if (selectedRole === 'autp') {
+                window.location.href = 'autp.html';
+            } else if (selectedRole === 'peneliti') {
+                window.location.href = 'peneliti.html';
+            } else {
+                alert('Silakan pilih peran Anda terlebih dahulu.');
+            }
+        });
+    </script>
+
+</body>
+</html>
